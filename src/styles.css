@@ -100,6 +100,14 @@ aside {
 		flex-grow: 1;
 		text-align: left;
 	}
+
+	.active {
+		color: var(--accent-clr);
+
+		svg {
+			fill: var(--accent-clr)
+		}
+	}
 }
 
 aside.close {
@@ -152,6 +160,34 @@ aside .submenu {
 	}
 }
 
+.header-line {
+	margin-bottom: 15px;
+}
+
+.task {
+	padding: 1em;
+	display: flex;
+	border: 1px solid var(--line-clr);
+	border-radius: .5em;
+
+	&>.task-description, &>.task-project {
+		flex-grow: 1;
+	}
+
+	button svg {
+		flex-shrink: 0;
+		padding: 1em;
+
+		:hover {
+			background-color: var(--hover-clr)
+		}
+	}
+}
+
 main {
 	padding: 2rem 4rem;
+
+	.header-line {
+		border-bottom: 1px solid var(--line-clr)
+	}
 }

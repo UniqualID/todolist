@@ -1,0 +1,25 @@
+Todo class
+- title
+- description
+- dueDate
+- priority (enum: High Med Low)
+- associated project
+
+Storage
+
+
+Sidebar
+- All/main: shows all todos sorted by date
+- weekly
+- monthly
+- done
+	Projects: should lead to a main projects page
+		- custom
+		- projects
+		- here
+
+
+Bonus:
+- day/night mode
+- removing todo should have sliding animation
+- 
