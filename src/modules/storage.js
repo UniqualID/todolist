@@ -12,6 +12,7 @@ function retrieve(key, defaultval = null) {
     if (!stored) return defaultval;
 
     const parsed = JSON.parse(localStorage.getItem(key));
+    if (!parsed) return defaultval;
     switch (parsed.type) {
         case 'string':
             return parsed.value;

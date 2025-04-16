@@ -402,6 +402,7 @@ dialog {
 		top: 50%;
 		left: -10px;
 		border-top: 4px solid var(--text-clr-opaque);
+		pointer-events: none;
 	}
 }
 
