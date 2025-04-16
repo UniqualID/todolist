@@ -14,6 +14,28 @@
     <body class="darkmode">
         <nav>
             <h1>Todo!</h1>
+            <button id="theme-switch">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                >
+                    <path
+                        d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"
+                    ></path>
+                </svg>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                >
+                    <path
+                        d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"
+                    ></path>
+                </svg>
+            </button>
         </nav>
         <aside>
             <ul>
@@ -126,64 +148,218 @@
                         </svg>
                     </button>
                     <ul class="submenu">
-                        <div>
-                            <li><button>Foo</button></li>
-                            <li><button>bar</button></li>
-                            <li><button>baz</button></li>
+                        <div id="projects">
+                            <li>
+                                <button>
+                                    <span class="emoji">😀</span
+                                    ><span class="projectname">Foo</span>
+                                    <div class="removeproj">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="24px"
+                                            viewBox="0 -960 960 960"
+                                            width="24px"
+                                            fill="#e8eaed"
+                                        >
+                                            <path
+                                                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
+                                            />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </li>
+                            <li>
+                                <button>
+                                    <span class="emoji">🏠</span
+                                    ><span class="projectname">Home</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button>
+                                    <span class="emoji">💰</span
+                                    ><span class="projectname">Finance</span>
+                                </button>
+                            </li>
+                            <button id="addproject">Add Project</button>
                         </div>
                     </ul>
                 </li>
             </ul>
         </aside>
-        <main id="content">
-            <div class="header-line">
-                <h1>All Tasks</h1>
-            </div>
-            <div id="taskcontainer">
-                <div class="task">
-                    <p class="task-description">Read Atomic Habits</p>
-                    <p class="task-project">SomeProject</p>
-                    <button class="task-done">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24px"
-                            viewBox="0 -960 960 960"
-                            width="24px"
-                            fill="#e8eaed"
-                        >
-                            <path
-                                d="m381-240 424-424-57-56-368 367-169-170-57 57 227 226Zm0 113L42-466l169-170 170 170 366-367 172 168-538 538Z"
-                            />
-                        </svg>
-                    </button>
-                    <button class="task-edit">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24px"
-                            viewBox="0 -960 960 960"
-                            width="24px"
-                            fill="#e8eaed"
-                        >
-                            <path
-                                d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"
-                            />
-                        </svg>
-                    </button>
-                    <button class="task-delete">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24px"
-                            viewBox="0 -960 960 960"
-                            width="24px"
-                            fill="#e8eaed"
-                        >
-                            <path
-                                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
-                            />
-                        </svg>
-                    </button>
+        <main id="content"></main>
+        <dialog id="newprojectdialog">
+            <h1>Add New Project</h1>
+            <form action="#" id="newprojectform">
+                <ul>
+                    <li>
+                        <label for="projname">Project Name</label>
+                        <input
+                            type="text"
+                            id="projname"
+                            name="projname"
+                            required
+                        />
+                    </li>
+                    <li>
+                        <label for="projemoji">Project Emoji</label>
+                        <emoji-picker></emoji-picker>
+                        <div id="emojioutput"></div>
+                    </li>
+                </ul>
+                <div class="buttonwrapper">
+                    <button type="reset">Reset</button>
+                    <button type="submit" id="submitproject">Submit</button>
+                    <button type="button" id="cancelproject">Cancel</button>
                 </div>
-            </div>
-        </main>
+            </form>
+        </dialog>
+        <dialog id="newtaskdialog">
+            <h1>Add New Task</h1>
+            <form action="#" id="newtaskform">
+                <ul>
+                    <li>
+                        <label for="desc">Description</label>
+                        <input type="text" id="desc" name="desc" required />
+                    </li>
+                    <li>
+                        <label for="duedate">Due Date</label>
+                        <input
+                            type="date"
+                            id="duedate"
+                            name="duedate"
+                            required
+                        />
+                    </li>
+                    <li>
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="proj">Project</label>
+                        <select id="proj" name="proj" required></select>
+                    </li>
+                    <li>
+                        <label for="completed">Completed?</label>
+                        <input
+                            type="checkbox"
+                            id="completed"
+                            name="completed"
+                        />
+                    </li>
+                </ul>
+                <div class="buttonwrapper">
+                    <button type="reset">Reset</button>
+                    <button type="submit" id="submit">Submit</button>
+                    <button type="button" id="cancel">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="newtaskdialog">
+            <h1>Add New Task</h1>
+            <form action="#" id="newtaskform">
+                <ul>
+                    <li>
+                        <label for="desc">Description</label>
+                        <input type="text" id="desc" name="desc" required />
+                    </li>
+                    <li>
+                        <label for="duedate">Due Date</label>
+                        <input
+                            type="date"
+                            id="duedate"
+                            name="duedate"
+                            required
+                        />
+                    </li>
+                    <li>
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="proj">Project</label>
+                        <select id="proj" name="proj" required></select>
+                    </li>
+                    <li>
+                        <label for="completed">Completed?</label>
+                        <input
+                            type="checkbox"
+                            id="completed"
+                            name="completed"
+                        />
+                    </li>
+                </ul>
+                <div class="buttonwrapper">
+                    <button type="reset">Reset</button>
+                    <button type="submit" id="submit">Submit</button>
+                    <button type="button" id="cancel">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="edittaskdialog">
+            <h1>Edit Task</h1>
+            <form action="#" id="edittaskform">
+                <ul>
+                    <li>
+                        <label for="edit-desc">Description</label>
+                        <input
+                            type="text"
+                            id="edit-desc"
+                            name="edit-desc"
+                            required
+                        />
+                    </li>
+                    <li>
+                        <label for="edit-duedate">Due Date</label>
+                        <input
+                            type="date"
+                            id="edit-duedate"
+                            name="edit-duedate"
+                            required
+                        />
+                    </li>
+                    <li>
+                        <label for="edit-priority">Priority</label>
+                        <select
+                            id="edit-priority"
+                            name="edit-priority"
+                            required
+                        >
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="edit-proj">Project</label>
+                        <select
+                            id="edit-proj"
+                            name="edit-proj"
+                            required
+                        ></select>
+                    </li>
+                    <li>
+                        <label for="edit-completed">Completed?</label>
+                        <input
+                            type="checkbox"
+                            id="edit-completed"
+                            name="edit-completed"
+                        />
+                    </li>
+                </ul>
+                <div class="buttonwrapper">
+                    <button type="reset">Reset</button>
+                    <button type="submit" id="edit-submit">Submit</button>
+                    <button type="button" id="edit-cancel">Cancel</button>
+                </div>
+            </form>
+        </dialog>
     </body>
 </html>
