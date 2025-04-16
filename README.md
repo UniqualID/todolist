@@ -1,1 +1,1 @@
-[# webpack-template](https://uniqualid.github.io/todolist/)
+https://uniqualid.github.io/todolist/
