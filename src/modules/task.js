@@ -41,6 +41,14 @@ function getCompletedTasks() {
     return Object.values(taskMap).filter((task) => task.completed);
 }
 
+function getOverdueTasks() {
+    const now = new Date();
+    return Object.values(taskMap).filter((task) => {
+        const due = new Date(task.duedate);
+        return due < now && !task.completed; // Task is overdue and not completed
+    });
+}
+
 function setTasks(tasks) {
     taskMap = {};
     for (const task of tasks) {
@@ -78,6 +86,7 @@ export {
     getWeeklyTasks,
     getMonthlyTasks,
     getCompletedTasks,
+    getOverdueTasks, // Export the new function
     getTasksByUUID,
     createTask,
     setTasks,

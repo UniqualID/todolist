@@ -12,6 +12,7 @@ import {
     getTasksByUUID,
     toggleTaskDone,
     getTasksByProjectUUID,
+    getOverdueTasks, // Importing getOverdueTasks
 } from './task.js';
 
 import { getProjByUUID, getAllProjs } from './project.js';
@@ -32,6 +33,7 @@ const elements = {
     weeklytasksBtn: document.querySelector('#weeklytasks'),
     monthlytasksBtn: document.querySelector('#monthlytasks'),
     completedtasksBtn: document.querySelector('#completedtasks'),
+    overduetasksBtn: document.querySelector('#overduetasks'),
     aside: document.querySelector('aside'),
     content: document.querySelector('#content'),
     newTaskForm: document.querySelector('#newtaskform'),
@@ -73,6 +75,8 @@ class State {
                 return getMonthlyTasks();
             case 'completedtasks':
                 return getCompletedTasks();
+            case 'overduetasks': // New case for overdue tasks
+                return getOverdueTasks();
         }
         if (State.currentState.startsWith('project:')) {
             const projectId = State.currentState.split(':')[1];
@@ -89,6 +93,8 @@ class State {
                 return 'Monthly Tasks';
             case 'completedtasks':
                 return 'Completed Tasks';
+            case 'overduetasks': // New title for overdue tasks
+                return 'Overdue Tasks';
         }
         if (State.currentState.startsWith('project:')) {
             const projectId = State.currentState.split(':')[1];
@@ -216,6 +222,7 @@ function setActive(btn) {
         elements.weeklytasksBtn,
         elements.monthlytasksBtn,
         elements.completedtasksBtn,
+        elements.overduetasksBtn,
         ...document.querySelectorAll('#projects button'),
     ];
 
@@ -341,6 +348,10 @@ function setupSidebar() {
     elements.completedtasksBtn.addEventListener('click', () => {
         State.setState('completedtasks');
         setActive(elements.completedtasksBtn);
+        displayTasksBasedOnState();
+    });
+    elements.overduetasksBtn.addEventListener('click', () => {
+        State.setState('overduetasks');
         displayTasksBasedOnState();
     });
 
